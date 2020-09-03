@@ -1,0 +1,8 @@
+.Login{
+    display:flex;
+    justify-content: center;
+}
+.Form {
+  margin:200px 0 0 0;
+  width: 200px;
+}
