@@ -1,7 +1,6 @@
 import React from 'react';
 import {Form, Button} from 'react-bootstrap';
-import HeadNav from './HeadNav';
-import BaseNav from './BaseNav';
+
 import './Login.css'
 
 
@@ -11,7 +10,7 @@ function Login() {
         <div className='Login'>
             
             
-            <Form className='Form'>
+            <Form className='LoginForm'>
                 <Form.Group controlId="formBasicEmail">
                     <Form.Label>Email address</Form.Label>
                     <Form.Control type="email" placeholder="Enter email" />

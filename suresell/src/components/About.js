@@ -1,6 +1,9 @@
 import React from 'react';
 import { Accordion, Card, Jumbotron, Image } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import HeadNav from './HeadNav';
+import BaseNav from './BaseNav';
+import './About.css'
 
 function About() {
     const members = [
@@ -16,14 +19,17 @@ function About() {
         }
     ]
     return (
-
-        <Jumbotron className='about'>
-            <h1>MEET OUR TEAM</h1>
-            <p className='body'>
-                Welcome friend! If you're looking to improve quantity and quality of your sales, then look no further! SureSell is a quick and easy way to reference any of your inventories' key selling features by creating visual cards you can quickly sort through.
-                SureSell will help you make the impression that you are a product expert!
+        <div className='About'>
+            <HeadNav />
+            <Jumbotron className='about'>
+                <h1>SureSell:</h1>
+                <p className='body'>
+                    Welcome friend! If you're looking to improve the quantity and quality of your sales, then look no further! SureSell is a quick and easy way to reference any of your inventories' key selling features by creating visual cards you can quickly sort through, yourself!<br /><br />
+                    SureSell will help make the impression that you are a product expert!
 			</p>
-        </Jumbotron>
+            </Jumbotron>
+            <BaseNav />
+        </div>
 
     );
 }
