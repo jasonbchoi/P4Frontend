@@ -17,7 +17,7 @@ function HeadNav() {
                 <Nav.Item>
                     <Nav.Link eventKey='disabled' disabled>
                         Disabled
-      </Nav.Link>
+                    </Nav.Link>
                 </Nav.Item>
             </Nav>
         </Navbar>

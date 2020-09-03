@@ -5,10 +5,11 @@ import BaseNav from './BaseNav';
 import './Login.css'
 
 
-function Login(props) {
+function Login() {
     return (
+       
         <div className='Login'>
-            <HeadNav className='HeadNav' />
+            
             
             <Form className='Form'>
                 <Form.Group controlId="formBasicEmail">
@@ -28,7 +29,7 @@ function Login(props) {
                 </Button>
             </Form>
             
-            <BaseNav className='BaseNav' />
+           
         </div>
     );
 }

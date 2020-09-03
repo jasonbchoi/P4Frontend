@@ -1,8 +1,24 @@
+
 .Login{
-    display:flex;
+    display:grid;
     justify-content: center;
+    
+     /* The image used */
+  background-image: url("https://mediad.publicbroadcasting.net/p/shared/npr/styles/x_large/nprshared/202004/837397764.jpg");
+    backdrop-filter: blur(5px);
+
+
+
+  /* Full height */
+  height: 100%;
+
+  /* Center and scale the image nicely */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 .Form {
-  margin:200px 0 0 0;
-  width: 200px;
+  margin:250px;
+  width: 300px;
+ 
 }
