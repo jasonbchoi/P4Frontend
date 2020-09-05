@@ -1,10 +1,17 @@
 import React, { Component } from 'react';
+import AddForm from './AddForm'
+import { Form, Button } from 'react-bootstrap'
 
 class List extends Component {
     render() {
         return (
-            <div>
-                List
+            <div className='List'>
+
+                
+
+                <AddForm/>
+                
+
             </div>
         );
     }
