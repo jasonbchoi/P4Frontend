@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import HeadNav from './HeadNav'
 import BaseNav from './BaseNav'
-import { Form, Row, Col } from 'react-bootstrap'
+import { Form, Row, Col, Button, InputGroup, FormControl } from 'react-bootstrap'
 import './Add.css'
 
 class Add extends Component {
@@ -10,7 +10,7 @@ class Add extends Component {
             <div className='Add'>
                 <HeadNav />
 
-                <Form className='AddForm'>
+                <Form className='AddField'>
                     <Row>
                         <Col>
                             <Form.Control placeholder="Year" />
@@ -28,19 +28,25 @@ class Add extends Component {
                         </Col>
                     </Row>
                 </Form>
-
-                <Form className='AddForm'>
-                    <Form.Group controlId="formBasicEmail">
-                        <Form.Label>Features:</Form.Label>
-                        <Form.Control type="email" placeholder="Feature" />
-                        <Form.Text className="text-muted">
-                            **Abbreviate features
-                        </Form.Text>
-                    </Form.Group>
-
-                    
-                    
+<br/>
+                
+                <Form inline className='AddFeature'>
+                    <Form.Label htmlFor="inlineFormInputName2" srOnly>
+                        Add Features
+                    </Form.Label>
+                    <Form.Control
+                        className="mb-2 mr-sm-2"
+                        id="inlineFormInputName2"
+                        placeholder="Feature"
+                    />
+                    <Button type="submit" className="mb-2" id="AddButton" >
+                        +
+                    </Button>
                 </Form>
+                <br/>
+                <Button className='AddCard' variant="primary" size="lg" block>
+                    Make Card
+  </Button>
 
 
                 <BaseNav />
