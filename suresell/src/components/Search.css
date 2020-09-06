@@ -1,5 +1,6 @@
 @media (max-width: 500px){
     .Search{
+        border-radius: 15px;
         border: 2px solid rgb(221, 216, 216);
         width: 325px;
         padding: 25px;

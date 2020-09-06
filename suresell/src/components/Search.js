@@ -4,7 +4,7 @@ import './Search.css'
 function Search(props) {
     return (
 			<div className='Search'>
-				<h2>Search</h2>
+				<h4>Search</h4>
 				<Form inline className='SearchBar'>
 				
 					<Form.Control
