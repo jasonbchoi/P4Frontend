@@ -5,6 +5,8 @@ import Login from './components/Login';
 import About from './components/About';
 import Add from './components/Add';
 import Search from './components/Search'
+import ViewAll from './components/ViewAll'
+
 
 
 
@@ -15,7 +17,9 @@ class App extends Component {
         {/* <Login/> */}
         {/* <About/> */}
         {/* <Add/> */}
-        <Search/>
+        {/* <Search/> */}
+        <ViewAll/>
+
       </div>
     );
   }

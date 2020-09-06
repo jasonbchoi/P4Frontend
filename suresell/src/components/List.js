@@ -7,8 +7,6 @@ class List extends Component {
         return (
             <div className='List'>
 
-                
-
                 <AddForm/>
                 
 
