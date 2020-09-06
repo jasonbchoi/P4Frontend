@@ -4,7 +4,7 @@ import './App.css';
 import Login from './components/Login';
 import About from './components/About';
 import Add from './components/Add';
-
+import Search from './components/Search'
 
 
 
@@ -14,7 +14,8 @@ class App extends Component {
       <div className='App'>
         {/* <Login/> */}
         {/* <About/> */}
-        <Add/>
+        {/* <Add/> */}
+        <Search/>
       </div>
     );
   }
