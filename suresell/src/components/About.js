@@ -7,17 +7,17 @@ import './About.css'
 
 function About() {
     const members = [
-        {
-            name: 'Jason Choi',
-            githubLink: 'https://github.com/jasonbchoi',
-            linkedInLink: 'https://www.linkedin.com/in/jasonbchoi',
-        },
-        {
-            name: 'Alex Powers',
-            githubLink: '',
-            linkedInLink: '',
-        }
-    ]
+			{
+				name: 'Jason Choi',
+				githubLink: 'https://github.com/jasonbchoi',
+				linkedInLink: 'https://www.linkedin.com/in/jasonbchoi',
+			},
+			{
+				name: 'Alex Powers',
+				githubLink: 'https://github.com/alexpowers429',
+				linkedInLink: 'https://www.linkedin.com/in/alex-powers-dev/',
+			},
+		];
     return (
         <div className='About'>
             <HeadNav />
