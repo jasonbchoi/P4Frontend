@@ -10,8 +10,8 @@ class ViewAll extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            newSearch:'',
-            featureList:[],
+            newSearch: '',
+            featureList: [],
         };
     }
 
@@ -21,7 +21,7 @@ class ViewAll extends Component {
 
     handleSubmit = (event) => {
         event.preventDefault();
-        
+
     };
 
     render() {
@@ -32,18 +32,18 @@ class ViewAll extends Component {
                 <Form className="ViewAllSearch" onSubmit={this.handleSubmit}>
                     <Form.Row className="align-items-center">
                         <Col sm={5} className="my-1">
-                            <Form.Control 
-                            id="inlineFormInputName" 
-                            placeholder="year, make, model, or trim"
-                            type='text'
-                            name='searchString'
-                            required
-                            onChange={this.handleChange}
-                            value = {this.state.year} />
+                            <Form.Control
+                                id="inlineFormInputName"
+                                placeholder="year, make, model, or trim"
+                                type='text'
+                                name='searchString'
+                                required
+                                onChange={this.handleChange}
+                                value={this.state.year} />
                         </Col>
-                        
+
                         <Col xs="auto" className="my-1">
-                    
+
                             <Button type='submit' className='mb-2' id='AddButton'>
                                 Find
 				            </Button>

@@ -5,7 +5,7 @@ class AddForm extends Component {
         super(props);
         this.state = {
             feature: '',
-            features: []
+            featureList: []
         };
     }
 
@@ -17,6 +17,7 @@ class AddForm extends Component {
     addFeature = (event) => {
         event.preventDefault()
         this.setState({features:this.state.feature})
+        
     };
 
     render() {
