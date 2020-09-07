@@ -1,29 +1,55 @@
-import React from 'react';
-import { Form, Button} from 'react-bootstrap'
+import React, { Component } from 'react';
+import { Form, Button } from 'react-bootstrap'
+class AddForm extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            feature: '',
+            features: []
+        };
+    }
 
-
-function AddForm(props) {
-    return (
-        <div>
+    handleChange = (event) =>
+        this.setState({
+            feature: event.target.value,
             
-            <Form inline className='AddFeature'>
-                Add Features
-                <Form.Control
-                    className="mb-2 mr-sm-2"
-                    id="inlineFormInputName2"
-                    placeholder="Feature"
-                />
+        });
+    addFeature = (event) => {
+        event.preventDefault()
+        this.setState({features:this.state.feature})
+    };
 
-                
-                <Button type="submit" className="mb-2" id="AddButton" >
-                    +
+    render() {
+        return (
+            <div className='AddForm'>
+                Add Feature
+                <ul className='featureList'>{this.state.features}</ul>
+                <Form inline className='AddFeature' onSubmit={this.addFeature}>
+
+
+                    <Form.Control
+                        
+                        className="mb-2 mr-sm-2"
+                        id="inlineFormInputName2"
+                        placeholder="Feature"
+                        type='text'
+                        name='searchString'
+                        required
+                        onChange={this.handleChange}
+                        value={this.state.feature}
+                    />
+
+
+                    <Button type="submit" className="mb-2" id="AddButton" >
+                        +
                     </Button>
-                <Form.Text className="text-muted">
-                    **Abbreviate Features**
+                    <Form.Text className="text-muted">
+                        **Abbreviate Features**
     </Form.Text>
-            </Form>
-        </div>
-    );
+                </Form>
+            </div>
+        );
+    }
 }
 
 export default AddForm;

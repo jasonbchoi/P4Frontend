@@ -5,3 +5,8 @@
 .ViewInfoCard{
     margin:500px;
 }
+
+.InfoCard{
+    display:flex;
+    justify-content: center;
+}
