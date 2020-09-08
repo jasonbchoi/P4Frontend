@@ -1,6 +1,7 @@
 import React from 'react';
 import { Form, Button } from 'react-bootstrap';
 
+
 import './Login.css';
 
 function Login() {
@@ -19,7 +20,7 @@ function Login() {
 					<Form.Control type='password' placeholder='Password' />
 				</Form.Group>
 
-				<Button variant='primary' type='submit'>
+				<Button id='link' href='/search' variant='primary' type='submit'>
 					Submit
 				</Button>
 			</Form>
