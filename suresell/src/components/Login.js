@@ -1,9 +1,6 @@
 import React from 'react';
 import { Form, Button } from 'react-bootstrap';
 
-
-import './Login.css';
-
 function Login() {
 	return (
 		<div className='Login'>
@@ -20,7 +17,7 @@ function Login() {
 					<Form.Control type='password' placeholder='Password' />
 				</Form.Group>
 
-				<Button id='link' href='/search' variant='primary' type='submit'>
+				<Button id='Button' href='/search' variant='primary' type='submit'>
 					Submit
 				</Button>
 			</Form>

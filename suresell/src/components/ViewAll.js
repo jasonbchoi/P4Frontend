@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import HeadNav from './HeadNav';
 import BaseNav from './BaseNav';
 import Search from './Search';
-import InfoCard from './InfoCard';
+// import InfoCard from './InfoCard';
 
 import { Form, Button, Col, Card } from 'react-bootstrap';
 
@@ -43,7 +43,7 @@ class ViewAll extends Component {
 						</Col>
 
 						<Col xs='auto' className='my-1'>
-							<Button type='submit' className='mb-2' id='AddButton'>
+							<Button type='submit' className='mb-2' id='Button'>
 								Find
 							</Button>
 						</Col>
@@ -51,16 +51,16 @@ class ViewAll extends Component {
 				</Form>
 
 				<div id='autoCard'>
-					<div class='headWrapper'>
-						<div class='number'>20</div>
-						<div class='makeModel'>
+					<div className='headWrapper'>
+						<div className='number'>20</div>
+						<div className='makeModel'>
 							Chevy Malibu
 							<br />
 							Sport
 						</div>
 					</div>
-					<div class='bodyWrapper'>
-						<div class='left'>
+					<div className='bodyWrapper'>
+						<div className='left'>
 							<ul>
 								<li>A</li>
 								<li>B</li>
@@ -69,7 +69,7 @@ class ViewAll extends Component {
 								<li>E</li>
 							</ul>
 						</div>
-						<div class='right'>
+						<div className='right'>
 							<ul>
 								<li>A</li>
 								<li>B</li>

@@ -19,8 +19,8 @@ class App extends Component {
 						return <Login />;
 					}}
 				/>
-				{/* <About/> */}
-				{/* <ViewAll/> */}
+        <Route path='/about' component={About} />
+        <Route path='/viewall' component={ViewAll} />
 				<Route path='/add' component={Add} />
 				<Route
 					path='/search'

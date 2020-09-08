@@ -11,13 +11,13 @@ function BaseNav() {
 				variant='dark'>
 				<Nav activeKey='/home'>
 					<Nav.Item>
-						<Nav.Link href='/search'>Search</Nav.Link>
+						<Nav.Link className='searchIcon'href='/search'>Search</Nav.Link>
 					</Nav.Item>
 					<Nav.Item>
-						<Nav.Link href='/viewall'>All</Nav.Link>
+						<Nav.Link className='allIcon' href='/viewall'>All</Nav.Link>
 					</Nav.Item>
 					<Nav.Item>
-						<Nav.Link href='/about'>About</Nav.Link>
+						<Nav.Link className='aboutIcon' href='/about'>About</Nav.Link>
 					</Nav.Item>
 					
 				</Nav>

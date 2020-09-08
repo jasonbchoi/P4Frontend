@@ -1,14 +1,20 @@
-.App {
-}
+
 
 @media (max-width: 5000px) {
-	.about {
-		margin-top: 100px;
+	.App {
+		display:flex;
+	justify-content: center;
+
+}
+/******************  Add.js  ******************/
+	.Add{
+		width:430px;
+	
 	}
 	.AddField {
 		margin: 80px 10% 0 10%;
 	}
-	#AddButton {
+	#Button {
 		margin-left: 4px;
 		height: 32px;
 		display: inline-block;
@@ -53,6 +59,11 @@
 			color-stop(1, rgb(97, 155, 203))
 		);
 	}
+	
+	.about {
+		margin-top: 100px;
+	}
+
 	.AddFeature {
 		margin: 10px 10% 0 10%;
 	}
@@ -124,14 +135,9 @@
 		margin-bottom: 30px;
 	}
 
-	.ViewInfoCard {
-		margin: 500px;
-	}
+	
+/******************  ViewAll.js  ******************/
 
-	.InfoCard {
-		display: flex;
-		justify-content: center;
-	}
 	#autoCard {
 		border: 1px solid;
 		margin: 5px;
@@ -170,4 +176,91 @@
 	.bodyWrapper ul {
 		list-style: square;
 	}
+	
+/******************  Login.js  ******************/
+
+	.Login {
+	display: grid;
+	justify-content: center;
+
+	/* The image used */
+	background-image: url('https://mediad.publicbroadcasting.net/p/shared/npr/styles/x_large/nprshared/202004/837397764.jpg');
+	backdrop-filter: blur(5px);
+
+	/* Full height */
+	height: 100%;
+
+	/* Center and scale the image nicely */
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+.LoginForm {
+	margin: 250px;
+	width: 300px;
+}
+/******************  Search.js  ******************/
+.Search {
+		border-radius: 15px;
+		border: 2px solid #343a40;
+		width: 325px;
+		padding: 25px;
+		margin: 200px auto 0 auto;
+	}
+	.SearchButton {
+		display: inline-block;
+		text-decoration: none;
+		color: #fff;
+		font-weight: bold;
+		background-color: #538fbe;
+		padding: 0 10px;
+		font-size: 24px;
+		border: 1px solid #2d6898;
+		background-image: linear-gradient(
+			bottom,
+			rgb(73, 132, 180) 0%,
+			rgb(97, 155, 203) 100%
+		);
+		background-image: -o-linear-gradient(
+			bottom,
+			rgb(73, 132, 180) 0%,
+			rgb(97, 155, 203) 100%
+		);
+		background-image: -moz-linear-gradient(
+			bottom,
+			rgb(73, 132, 180) 0%,
+			rgb(97, 155, 203) 100%
+		);
+		background-image: -webkit-linear-gradient(
+			bottom,
+			rgb(73, 132, 180) 0%,
+			rgb(97, 155, 203) 100%
+		);
+		background-image: -ms-linear-gradient(
+			bottom,
+			rgb(73, 132, 180) 0%,
+			rgb(97, 155, 203) 100%
+		);
+
+		background-image: -webkit-gradient(
+			linear,
+			left bottom,
+			left top,
+			color-stop(0, rgb(73, 132, 180)),
+			color-stop(1, rgb(97, 155, 203))
+		);
+	}
+	#Button {
+		font-size: 15px;
+	}
+
+	.SearchBar {
+		width: 270px;
+	}
+
+
+
+
+
+
 }

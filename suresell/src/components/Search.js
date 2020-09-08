@@ -1,9 +1,8 @@
 import React from 'react';
 import { Form, Button } from 'react-bootstrap';
-import './Search.css';
 import Headnav from './HeadNav';
 import Basenav from './BaseNav';
-import InfoCard from './InfoCard';
+// import InfoCard from './InfoCard';
 
 // handleChange = (event) => {
 //     this.setState({ searchString: event.target.value });
@@ -22,7 +21,7 @@ function Search(props) {
 					placeholder='i.e. year, make, model'
 				/>
 
-				<Button type='submit' className='mb-2' id='AddButton'>
+				<Button type='submit' className='mb-2' id='Button'>
 					Find
 				</Button>
 				<Form.Text className='text-muted'></Form.Text>

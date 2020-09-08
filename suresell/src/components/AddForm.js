@@ -40,7 +40,7 @@ class AddForm extends Component {
 						onChange={this.handleChange}
 						value={this.state.feature}
 					/>
-					<Button type='submit' className='mb-2' id='AddButton'>
+					<Button type='submit' className='mb-2' id='Button'>
 						+
 					</Button>
 					<Form.Text className='text-muted'>**Abbreviate Features**</Form.Text>
