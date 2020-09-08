@@ -14,11 +14,11 @@ class App extends Component {
   render() {
     return (
       <div className='App'>
-        {/* <Login/> */}
-        {/* <About/> */}
+        <Login/>
+        <About/>
         <Add/>
-        {/* <Search/> */}
-        {/* <ViewAll/> */}
+        <Search/>
+        <ViewAll/>
 
       </div>
     );

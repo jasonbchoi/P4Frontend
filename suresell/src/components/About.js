@@ -3,7 +3,7 @@ import { Accordion, Card, Jumbotron, Image } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import HeadNav from './HeadNav';
 import BaseNav from './BaseNav';
-import './About.css'
+
 
 function About() {
     const members = [

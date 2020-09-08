@@ -1,3 +1,131 @@
 .App{
   
 }
+
+
+
+@media (max-width: 5000px){
+    .about{
+        margin-top:100px;
+    }
+    .AddField{
+        margin:80px 10% 0 10%;
+    }
+    #AddButton{
+        margin-left: 4px;
+        height: 32px;
+        display: inline-block;
+        text-decoration: none;
+        color: #fff;
+        font-weight: bold;
+        background-color: #538fbe;
+        padding: 0 10px;
+        font-size: 24px;
+        border: 1px solid #2d6898;
+        background-image: linear-gradient(bottom, rgb(73,132,180) 0%, rgb(97,155,203) 100%);
+        background-image: -o-linear-gradient(bottom, rgb(73,132,180) 0%, rgb(97,155,203) 100%);
+        background-image: -moz-linear-gradient(bottom, rgb(73,132,180) 0%, rgb(97,155,203) 100%);
+        background-image: -webkit-linear-gradient(bottom, rgb(73,132,180) 0%, rgb(97,155,203) 100%);
+        background-image: -ms-linear-gradient(bottom, rgb(73,132,180) 0%, rgb(97,155,203) 100%);
+    
+        background-image: -webkit-gradient(
+            linear,
+            left bottom,
+            left top,
+            color-stop(0, rgb(73,132,180)),
+            color-stop(1, rgb(97,155,203))
+        );
+    }
+    .AddFeature{
+        margin:10px 10% 0 10%;
+    }
+    #inlineFormInputName2{
+        width: 295px; 
+    }
+    .AddCard{
+        margin:20px auto 0 auto;
+        
+        max-width: 200px;
+        text-decoration: none;
+        color: #fff;
+        font-weight: bold;
+        background-color: #538fbe;
+        padding: 20px 70px;
+        font-size: 24px;
+        border: 1px solid #2d6898;
+        background-image: linear-gradient(bottom, rgb(73,132,180) 0%, rgb(97,155,203) 100%);
+        background-image: -o-linear-gradient(bottom, rgb(73,132,180) 0%, rgb(97,155,203) 100%);
+        background-image: -moz-linear-gradient(bottom, rgb(73,132,180) 0%, rgb(97,155,203) 100%);
+        background-image: -webkit-linear-gradient(bottom, rgb(73,132,180) 0%, rgb(97,155,203) 100%);
+        background-image: -ms-linear-gradient(bottom, rgb(73,132,180) 0%, rgb(97,155,203) 100%);
+    
+        background-image: -webkit-gradient(
+            linear,
+            left bottom,
+            left top,
+            color-stop(0, rgb(73,132,180)),
+            color-stop(1, rgb(97,155,203))
+        );
+        -webkit-border-radius: 5px;
+        -moz-border-radius: 5px;
+        border-radius: 5px;
+        text-shadow: 0px -1px 0px rgba(0,0,0,.5);
+        -webkit-box-shadow: 0px 6px 0px #2b638f, 0px 3px 15px rgba(0,0,0,.4), inset 0px 1px 0px rgba(255,255,255,.3), inset 0px 0px 3px rgba(255,255,255,.5);
+        -moz-box-shadow: 0px 6px 0px #2b638f, 0px 3px 15px rgba(0,0,0,.4), inset 0px 1px 0px rgba(255,255,255,.3), inset 0px 0px 3px rgba(255,255,255,.5);
+        box-shadow: 0px 6px 0px #2b638f, 0px 3px 15px rgba(0,0,0,.4), inset 0px 1px 0px rgba(255,255,255,.3), inset 0px 0px 3px rgba(255,255,255,.5);
+
+    }
+    .ViewAllSearch {
+  margin: 60px 10px 0 10px;
+}
+
+.ViewInfoCard {
+  margin: 500px;
+}
+
+.InfoCard {
+  display: flex;
+  justify-content: center;
+}
+#autoCard {
+  border: 1px solid;
+  margin: 5px;
+  border-radius: 8%;
+  padding: 20px;
+  height: 350px;
+}
+.makeModel {
+  font-size: 25px;
+  line-height: 25px;
+  margin-left: 10px;
+}
+.number {
+  line-height: 1;
+  font-size: 50px;
+}
+.headWrapper {
+  display: flex;
+  border-bottom: 1px solid;
+  /* justify-content: center; */
+  padding-bottom: 20px;
+  padding-left: 25px;
+}
+.bodyWrapper {
+  display: flex;
+  padding-top: 20px;
+}
+.left {
+  width: 50%;
+  border-right: 1px solid;
+  font-size: 25px;
+  height: 215px;
+}
+.right {
+  font-size: 25px;
+  padding-left: 15px;
+}
+.bodyWrapper ul {
+  list-style: square;
+}
+
+}
