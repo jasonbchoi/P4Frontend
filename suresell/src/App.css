@@ -78,6 +78,9 @@
     .ViewAllSearch {
   margin: 60px 10px 0 10px;
 }
+.ViewAll{
+    margin-bottom:30px;
+}
 
 .ViewInfoCard {
   margin: 500px;
@@ -106,16 +109,15 @@
 .headWrapper {
   display: flex;
   border-bottom: 1px solid;
-  /* justify-content: center; */
-  padding-bottom: 20px;
-  padding-left: 25px;
+  padding: 0 0 20px 5px;
+  
 }
 .bodyWrapper {
   display: flex;
   padding-top: 20px;
 }
 .left {
-  width: 50%;
+  width: 175px;
   border-right: 1px solid;
   font-size: 25px;
   height: 215px;
