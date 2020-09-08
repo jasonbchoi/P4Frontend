@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import HeadNav from './HeadNav';
 import BaseNav from './BaseNav';
 import Search from './Search';
-// import InfoCard from './InfoCard';
 
 import { Form, Button, Col, Card } from 'react-bootstrap';
 
@@ -12,6 +11,7 @@ class ViewAll extends Component {
 		this.state = {
 			newSearch: '',
 			featureList: [],
+
 		};
 	}
 
@@ -27,10 +27,10 @@ class ViewAll extends Component {
 		return (
 			<div className='ViewAll'>
 				<HeadNav />
-
+				
 				<Form className='ViewAllSearch' onSubmit={this.handleSubmit}>
 					<Form.Row className='align-items-center'>
-						<Col sm={5} className='my-1'>
+						<Col sm={3} className='my-1'>
 							<Form.Control
 								id='inlineFormInputName'
 								placeholder='year, make, model, or trim'
@@ -38,7 +38,7 @@ class ViewAll extends Component {
 								name='searchString'
 								required
 								onChange={this.handleChange}
-								value={this.state.year}
+								
 							/>
 						</Col>
 

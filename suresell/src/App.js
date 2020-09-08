@@ -11,7 +11,6 @@ class App extends Component {
 	render() {
 		return (
 			<div className='App'>
-				{/* <Login /> */}
 				<Route
 					path='/'
           exact
@@ -24,9 +23,7 @@ class App extends Component {
 				<Route path='/add' component={Add} />
 				<Route
 					path='/search'
-					render={() => {
-						return <Search />;
-					}}
+          component={Search}
 				/>
 			</div>
 		);
