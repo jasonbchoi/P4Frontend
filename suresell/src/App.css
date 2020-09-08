@@ -5,6 +5,7 @@
 		display:flex;
 	justify-content: center;
 
+
 }
 /******************  Add.js  ******************/
 	.Add{
@@ -203,6 +204,9 @@
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+}
+#formBasicEmail{
+	color:white;
 }
 
 
