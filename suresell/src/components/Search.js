@@ -24,7 +24,7 @@ function Search(props) {
 					placeholder='i.e. year, make, model, or trim'
 				/>
 				
-				<Button type='submit' className='mb-2' id='Button'>
+				<Button type='submit' className='mb-2' id='Button' href='/viewall'>
 					Find
 				</Button>
 				<Form.Text className='text-muted'></Form.Text>
