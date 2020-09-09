@@ -22,14 +22,22 @@ class ViewAll extends Component {
 
 	handleSubmit = (event) => {
 		event.preventDefault()
-		let url = `https://dashboard.heroku.com/apps/suresell`;
-		axios(url)
-			.then((res) => res.data)
+		let url = `https://cors-anywhere.herokuapp.com/https://suresell.herokuapp.com/cars/`;
+		fetch(url)
+			.then((res) => res.json())
 			.then((res) => {
 				this.setState({ featureList: [...res] });
 				console.log(this.state.featureList);
+
 			});
-	};
+			for (let i=0;i<this.state.featureList.length;i++){
+			if (Object.values(this.state.featureList[i]).includes(this.state.newSearch)){
+				featureList[i]
+			
+			}else{
+				console.log('no');
+			}
+	};}
 
 	render() {
 		return (
