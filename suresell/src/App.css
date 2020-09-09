@@ -133,6 +133,16 @@
 			inset 0px 1px 0px rgba(255, 255, 255, 0.3),
 			inset 0px 0px 3px rgba(255, 255, 255, 0.5);
 	}
+
+
+/******************  AddForm.js  ******************/
+
+	.featureItem{
+		border-bottom: 1px solid;
+		width:85%;
+		 list-style-type: none;
+		
+	}
 	
 
 	
@@ -186,6 +196,7 @@
 	.bodyWrapper ul {
 		list-style: square;
 	}
+	
 	
 /******************  Login.js  ******************/
 	.Login {
