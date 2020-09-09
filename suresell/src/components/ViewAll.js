@@ -12,10 +12,11 @@ class ViewAll extends Component {
 		this.state = {
 			newSearch: '',
 			featureList: [],
-			car:null
+			car: null,
+			allCars: null
 		};
 	}
-	
+
 	handleChange = (event) => {
 		this.setState({ newSearch: event.target.value });
 	};
@@ -27,52 +28,53 @@ class ViewAll extends Component {
 			.then((res) => res.json())
 			.then((res) => {
 				this.setState({ featureList: [...res] });
-				console.log(this.state.featureList);
+				for (let i = 0; i < this.state.featureList.length; i++) {
+					if (Object.values(this.state.featureList[i]).includes(this.state.newSearch)) {
+						let car = this.state.featureList[i]
+
+						
+						let display = (
+							<div id='autoCard'>
+								<div className='headWrapper'>
+									<div className='number'>
+										{car.year}
+									</div>
+									<div className='makeModel'>
+										{car.make}{' '}{car.model}
+										<br />
+										{car.trim}
+									</div>
+								</div>
+								<div className='bodyWrapper'>
+									<div className='left'>
+										<ul>
+											<li>A</li>
+											<li>B</li>
+											<li>C</li>
+											<li>D</li>
+											<li>E</li>
+										</ul>
+									</div>
+									<div className='right'>
+										<ul>
+											<li>A</li>
+											<li>B</li>
+											<li>C</li>
+											<li>D</li>
+											<li>E</li>
+										</ul>
+									</div>
+								</div>
+							</div>
+						)
+						this.setState({ car: display });
+					}
+				}
 
 
 			});
-			for (let i=0;i<this.state.featureList.length;i++){
-			if (Object.values(this.state.featureList[i]).includes(this.state.newSearch)){
-				let car = this.state.featureList[i]
-
-				console.log(car.year);
-				let display = (
-					<div id='autoCard'>
-						<div className='headWrapper'>
-							<div className='number'>
-								{car.year}
-							</div>
-							<div className='makeModel'>
-								{car.make}{' '}{car.model}
-							<br />
-								{car.trim}
-						</div>
-						</div>
-						<div className='bodyWrapper'>
-							<div className='left'>
-								<ul>
-									<li>A</li>
-									<li>B</li>
-									<li>C</li>
-									<li>D</li>
-									<li>E</li>
-								</ul>
-							</div>
-							<div className='right'>
-								<ul>
-									<li>A</li>
-									<li>B</li>
-									<li>C</li>
-									<li>D</li>
-									<li>E</li>
-								</ul>
-							</div>
-						</div>
-					</div>
-				)
-				this.setState({ car: display });
-			}
-	};}
+		;
+	}
 
 	render() {
 		return (
@@ -101,9 +103,9 @@ class ViewAll extends Component {
 						</Form.Row>
 					</Form>
 				</div>
-				
 
-				
+
+				<div>{this.state.car}</div>
 				<BaseNav />
 			</div>
 		);
