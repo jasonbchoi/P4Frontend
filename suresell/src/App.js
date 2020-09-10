@@ -13,7 +13,7 @@ class App extends Component {
 		email: 'test',
 		username: 'atp429',
 		password: 'Adb042415!',
-		login: false,
+		login: localStorage.getItem('token') ? true : false,
 	};
 
 	//needs token to be passed as header for each request
@@ -39,12 +39,21 @@ class App extends Component {
 					email: this.state.email,
 					username: this.state.username,
 					password: this.state.password,
-					login: false,
+					login: true,
 				});
 				console.log(res);
+				localStorage.setItem('token', res.access);
 			});
 	};
-
+	handleLogout = () => {
+		localStorage.removeItem('token');
+		this.setState({ token: '',
+		email: 'test',
+		username: 'atp429',
+		password: 'Adb042415!',
+		login: false
+	})
+	};
 	handleChangeEmail = (event) =>
 		this.setState({
 			email: event.target.value,
@@ -67,6 +76,7 @@ class App extends Component {
 					render={() => {
 						return (
 							<Login
+								handleLogout={this.handleLogout}
 								handleSubmit={this.handleSubmit}
 								handleChangeEmail={this.handleChangeEmail}
 								handleChangePassword={this.handleChangePassword}

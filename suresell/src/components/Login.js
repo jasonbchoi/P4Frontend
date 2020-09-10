@@ -30,6 +30,9 @@ function Login(props) {
 					<Button id='LoginButton' variant='primary' type='submit' >
 						Login
 				</Button>
+				<Button onClick={props.handleLogout}id='LogoutButton' variant='primary' type='button'>
+					Logout
+				</Button>
 				</Form>
 			</div></div>
 	);
