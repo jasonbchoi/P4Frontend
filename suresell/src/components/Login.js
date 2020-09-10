@@ -27,7 +27,7 @@ function Login(props) {
 
 
 
-					<Button id='LoginButton' variant='primary' type='submit' href='/viewall'>
+					<Button id='LoginButton' variant='primary' type='submit' >
 						Login
 				</Button>
 				</Form>
