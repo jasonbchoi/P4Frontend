@@ -9,7 +9,7 @@ import ViewAll from './components/ViewAll';
 
 class App extends Component {
 	state = {
-		token: '', 
+		token: '',
 		email: 'test',
 		username: 'test1',
 		password: 'test2',
@@ -20,7 +20,7 @@ class App extends Component {
 	//needs token to be passed as header for each request
 	handleSubmit = (event) => {
 		event.preventDefault()
-		const url = `https://cors-anywhere.herokuapp.com/https://suresell.herokuapp.com/users/`
+		const url = `https://suresell.herokuapp.com/users/`
 		fetch(url, {
 			method: 'POST',
 			// headers: {
@@ -61,9 +61,9 @@ class App extends Component {
 					exact
 
 					render={() => {
-						return <Login 
-						handleSubmit={this.handleSubmit} handleChangeEmail={this.handleChangeEmail} 
-						handleChangePassword={this.handleChangePassword}
+						return <Login
+							handleSubmit={this.handleSubmit} handleChangeEmail={this.handleChangeEmail}
+							handleChangePassword={this.handleChangePassword}
 							handleChangeUsername={this.handleChangeUsername} />;
 					}}
 				/>

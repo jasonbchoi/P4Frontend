@@ -1,17 +1,15 @@
 import React, { Component } from "react";
 import HeadNav from "./HeadNav";
 import BaseNav from "./BaseNav";
-import Search from "./Search";
-import axios from "axios";
 
-import { Form, Button, Col, Card } from "react-bootstrap";
+import { Form, Button, Col } from "react-bootstrap";
 
 class ViewAll extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
 			newSearch: "",
-			featureList: [],
+			carSpecs: [],
 			car: null,
 			allCars: null,
 		};
@@ -23,22 +21,22 @@ class ViewAll extends Component {
 
 	handleSubmit = (event) => {
 		event.preventDefault();
-		let url = `https://cors-anywhere.herokuapp.com/https://suresell.herokuapp.com/cars/`;
+		let url = `https://suresell.herokuapp.com/cars/`;
 		let newArr = [];
 		fetch(url)
 			.then((res) => res.json())
 			.then((res) => {
-				this.setState({ featureList: [...res] });
-				for (let i = 0; i < this.state.featureList.length; i++) {
+				this.setState({ carSpecs: [...res] });
+				for (let i = 0; i < this.state.carSpecs.length; i++) {
 					if (
-						Object.values(this.state.featureList[i]).includes(
+						Object.values(this.state.carSpecs[i]).includes(
 							this.state.newSearch
 						)
 					) {
-						newArr.push(this.state.featureList[i]);
+						newArr.push(this.state.carSpecs[i]);
 					}
 				}
-				this.setState({ featureList: newArr });
+				this.setState({ carSpecs: newArr });
 			});
 	};
 	componentDidMount() {
@@ -46,7 +44,7 @@ class ViewAll extends Component {
 		fetch(url)
 			.then((res) => res.json())
 			.then((res) => {
-				this.setState({ featureList: [...res] });
+				this.setState({ carSpecs: [...res] });
 			});
 	}
 
@@ -78,7 +76,7 @@ class ViewAll extends Component {
 				</div>
 
 				<div>
-					{this.state.featureList.map(function (car, index) {
+					{this.state.carSpecs.map(function (car, index) {
 						return (
 							<div id="autoCard">
 								<div className="headWrapper">
