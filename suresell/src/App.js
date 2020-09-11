@@ -10,14 +10,14 @@ import ViewAll from './components/ViewAll';
 class App extends Component {
 	state = {
 		token: '',
-		email: 'test',
-		username: 'atp429',
-		password: 'Adb042415!',
+		email: '',
+		username: '',
+		password: '',
 		login: localStorage.getItem('token') ? true : false,
 	};
 
 	//needs token to be passed as header for each request
-	handleSubmit = (event) => {
+	handleLogin = (event) => {
 		event.preventDefault();
 		const url = `https://suresell.herokuapp.com/api/token/`;
 		fetch(url, {
@@ -42,17 +42,28 @@ class App extends Component {
 					login: true,
 				});
 				console.log(res);
-				localStorage.setItem('token', res.access);
+				localStorage.setItem('token', res.access)
+				if (this.state.login) {
+					
+
+					
+						return <ViewAll />
+					
+				}else{
+					console.log('bye bitch')
+				}
 			});
+			
 	};
 	handleLogout = () => {
 		localStorage.removeItem('token');
-		this.setState({ token: '',
-		email: 'test',
-		username: 'atp429',
-		password: 'Adb042415!',
-		login: false
-	})
+		this.setState({
+			token: '',
+			email: '',
+			username: '',
+			password: '',
+			login: false,
+		});
 	};
 	handleChangeEmail = (event) =>
 		this.setState({
@@ -66,7 +77,7 @@ class App extends Component {
 		this.setState({
 			password: event.target.value,
 		});
-
+	
 	render() {
 		return (
 			<div className='App'>
@@ -77,7 +88,7 @@ class App extends Component {
 						return (
 							<Login
 								handleLogout={this.handleLogout}
-								handleSubmit={this.handleSubmit}
+								handleLogin={this.handleLogin}
 								handleChangeEmail={this.handleChangeEmail}
 								handleChangePassword={this.handleChangePassword}
 								handleChangeUsername={this.handleChangeUsername}
