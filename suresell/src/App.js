@@ -10,10 +10,10 @@ import ViewAll from './components/ViewAll';
 class App extends Component {
 	state = {
 		token: '',
-		email: '',
+		
 		username: '',
 		password: '',
-		login: localStorage.getItem('token') ? true : false,
+		login: ''
 	};
 
 	//needs token to be passed as header for each request
@@ -36,16 +36,14 @@ class App extends Component {
 			.then((res) => {
 				this.setState({
 					token: this.state.token,
-					email: this.state.email,
+					
 					username: this.state.username,
 					password: this.state.password,
-					login: true,
+					login: localStorage.getItem('token') ? true : false,
 				});
 				console.log(res);
 				localStorage.setItem('token', res.access)
 				if (this.state.login) {
-					
-
 					
 						return <ViewAll />
 					
