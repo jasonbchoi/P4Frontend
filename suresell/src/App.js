@@ -21,19 +21,7 @@ class App extends Component {
 			login: localStorage.getItem('token') ? true : false,
 		};
 	}
-	componentDidMount() {
-		if (this.state.login) {
-			fetch('http://localhost:8000/core/current_user/', {
-				headers: {
-					Authorization: `JWT ${localStorage.getItem('token')}`
-				}
-			})
-				.then(res => res.json())
-				.then(json => {
-					this.setState({ username: json.username });
-				});
-		}
-	}
+	
 	//needs token to be passed as header for each request
 	handleLogin = (e, data) => {
 		e.preventDefault();
@@ -72,6 +60,7 @@ class App extends Component {
 					login: true,
 					displayed_form: '',
 					username: json.username
+					
 				});
 			});
 	};
