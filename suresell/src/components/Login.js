@@ -7,9 +7,9 @@ class Login extends React.Component {
 		password: ''
 	};
 
-	handleChange = e => {
-		const name = e.target.name;
-		const value = e.target.value;
+	handleChange = event => {
+		const name = event.target.name;
+		const value = event.target.value;
 		this.setState(prevstate => {
 			const newState = { ...prevstate };
 			newState[name] = value;
@@ -19,7 +19,7 @@ class Login extends React.Component {
 
 	render() {
 		return (
-			<form onSubmit={e => this.props.handleLogin(e, this.state)}>
+			<form onSubmit={event => this.props.handleLogin(event, this.state)}>
 				<h4>Log In</h4>
 				<label htmlFor="username">Username</label>
 				<input

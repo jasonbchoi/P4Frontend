@@ -21,9 +21,9 @@ function Search(props) {
 				<Form.Control
 					className='mb-2 mr-sm-2'
 					id='inlineFormInputName2'
-					placeholder='i.e. year, make, model, or trim'
+					placeholder='i.event. year, make, model, or trim'
 				/>
-				
+
 				<Button type='submit' className='mb-2' id='Button' href='/viewall'>
 					Find
 				</Button>
