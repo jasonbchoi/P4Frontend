@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Route } from 'react-router-dom';
+import { Route, Redirect } from 'react-router-dom';
 import './App.css';
 import Login from './components/Login';
 import About from './components/About';
@@ -8,14 +8,22 @@ import Search from './components/Search';
 import ViewAll from './components/ViewAll';
 
 class App extends Component {
-	state = {
-		token: '',
-		
-		username: '',
-		password: '',
-		login: ''
-	};
+	constructor(props) {
+		super(props);
+		this.state = {
+			token: '',
+			username: '',
+			password: '',
+			login: false,
+			error: false
+		};
+	}
 
+	renderRedirect = () => {
+		if (this.state.login && !this.state.error) {
+			return <Redirect to='/viewall' />
+		}
+	}
 	//needs token to be passed as header for each request
 	handleLogin = (event) => {
 		event.preventDefault();
@@ -34,24 +42,34 @@ class App extends Component {
 				return res.json();
 			})
 			.then((res) => {
+				if (res.access) {
+					localStorage.setItem('token', res.access)
+				} else {
+					throw new Error('unsuccessful login')
+				}
+			})
+			.then((res) => {
 				this.setState({
 					token: this.state.token,
-					
+
 					username: this.state.username,
 					password: this.state.password,
 					login: localStorage.getItem('token') ? true : false,
 				});
 				console.log(res);
-				localStorage.setItem('token', res.access)
-				if (this.state.login) {
-					
-						return <ViewAll />
-					
-				}else{
-					console.log('bye bitch')
-				}
+
+				// if (this.state.login) {
+
+				// 	return <ViewAll />
+
+				// } else {
+				// 	console.log('bye ')
+				// }
+			}).catch(err => {
+				this.setState({ error: true })
+				console.error(err)
 			});
-			
+
 	};
 	handleLogout = () => {
 		localStorage.removeItem('token');
@@ -63,6 +81,8 @@ class App extends Component {
 			login: false,
 		});
 	};
+
+
 	handleChangeEmail = (event) =>
 		this.setState({
 			email: event.target.value,
@@ -75,10 +95,15 @@ class App extends Component {
 		this.setState({
 			password: event.target.value,
 		});
-	
+
 	render() {
+		// if(this.state.login){
+		// 	return <Redirect to='/viewall'/>
+		// }
+
 		return (
 			<div className='App'>
+				{this.renderRedirect()}
 				<Route
 					path='/'
 					exact

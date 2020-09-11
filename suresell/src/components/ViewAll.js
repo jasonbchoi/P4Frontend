@@ -9,7 +9,7 @@ class ViewAll extends Component {
 		super(props);
 		this.state = {
 			newSearch: '',
-			carSpecs: [],
+			features: [],
 			car: null,
 			allCars: null,
 			token: localStorage.getItem('token') ? true : false,
@@ -27,32 +27,32 @@ class ViewAll extends Component {
 		fetch(url)
 			.then((res) => res.json())
 			.then((res) => {
-				this.setState({ carSpecs: [...res] });
-				for (let i = 0; i < this.state.carSpecs.length; i++) {
+				this.setState({ features: [...res] });
+				for (let i = 0; i < this.state.features.length; i++) {
 					if (
-						Object.values(this.state.carSpecs[i]).includes(
+						Object.values(this.state.features[i]).includes(
 							this.state.newSearch
 						)
 					) {
-						newArr.push(this.state.carSpecs[i]);
+						newArr.push(this.state.features[i]);
 					}
 				}
-				this.setState({ carSpecs: newArr });
+				this.setState({ features: newArr });
 			});
 	};
 	componentDidMount() {
 		let url = `https://suresell.herokuapp.com/cars/`;
-		if (this.state.token){
+		if (this.state.token) {
 			fetch(url, {
 				method: 'GET',
 				headers: {
 					'Content-Type': 'application/json',
 				},
-				
+
 			})
 				.then((res) => res.json())
 				.then((res) => {
-					this.setState({ carSpecs: [...res] });
+					this.setState({ features: [...res] });
 				});
 
 		}
@@ -85,8 +85,8 @@ class ViewAll extends Component {
 					</Form>
 				</div>
 
-				<div>
-					{this.state.carSpecs.map(function (car, index) {
+				<div className='cardContainer'>
+					{this.state.features.map(function (car, index) {
 						return (
 							<div id="autoCard">
 								<div className="headWrapper">

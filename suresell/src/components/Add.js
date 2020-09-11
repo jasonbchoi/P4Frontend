@@ -13,7 +13,7 @@ class Add extends Component {
       model: "",
       trim: "",
       feature: '',
-      carSpecs: [],
+      features: [],
     };
   }
   clearForm = () => {
@@ -25,24 +25,48 @@ class Add extends Component {
     });
   addFeature = (event) => {
     event.preventDefault();
-    this.state.carSpecs.push(this.state.feature);
-    console.log(this.state.carSpecs);
-    this.setState({ features: this.state.feature });
+    this.setState(prevState => {
+      return {
+        features: [...prevState.features, this.state.feature]
+      }
+    })
+    console.log(this.state.features);
+
     this.clearForm()
   };
-  handleSubmit = (event) => {
-    event.preventDefault();
-    console.log(event.target);
-    const data = new FormData(event.target);
 
+
+  handleSubmit = (event) => {
+    // event.preventDefault();
+    console.log(event.target);
+    const data = {
+      method: "POST",
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization : 'Bearer ' + localStorage.getItem('token')
+      },
+      body: JSON.stringify({
+        year: this.state.year,
+        make: this.state.make,
+        model: this.state.year,
+        trim: this.state.trim,
+        // features: this.state.features,
+      })
+    };
     fetch(
-      "https://cors-anywhere.herokuapp.com/https://suresell.herokuapp.com/cars/",
-      {
-        method: "POST",
-        body: data,
-      }
-    );
-  };
+      "https://suresell.herokuapp.com/cars/", data)
+      .then((res) => {
+        return res.json()
+      })
+      .then((res) => {
+        console.log(res);
+      }).catch(error => console.error(error))
+  }
+
+
+
+
+
   handleChangeYear = (event) =>
     this.setState({
       year: event.target.value,
@@ -119,8 +143,8 @@ class Add extends Component {
         <br />
 
         <div className='AddForm'>
-          <ul className='carSpecs'>
-            {this.state.carSpecs.map((item) => (
+          <ul className='features'>
+            {this.state.features.map((item) => (
               <li className='featureItem' key={item}>{item}</li>
             ))}
           </ul>
@@ -143,10 +167,11 @@ class Add extends Component {
           </Form>
         </div>
 
+
         <Button
           type="submit"
           className="AddCard"
-          onSubmit={this.handleSubmit}
+          onClick={this.handleSubmit}
           variant="primary"
           size="lg"
           block
