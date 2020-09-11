@@ -6,85 +6,130 @@ import About from './components/About';
 import Add from './components/Add';
 import Search from './components/Search';
 import ViewAll from './components/ViewAll';
+import Nav from './components/Nav';
+import SignUp from './components/SignUp';
 
 class App extends Component {
-	state = {
-		token: '',
-		email: 'test',
-		username: 'atp429',
-		password: 'Adb042415!',
-		login: localStorage.getItem('token') ? true : false,
-	};
+	constructor(props) {
+		super(props);
+		this.state = {
+			displayed_form: '',
+			token: '',
+			email: 'test',
+			username: '',
 
+			login: localStorage.getItem('token') ? true : false,
+		};
+	}
+	componentDidMount() {
+		if (this.state.login) {
+			fetch('http://localhost:8000/core/current_user/', {
+				headers: {
+					Authorization: `JWT ${localStorage.getItem('token')}`
+				}
+			})
+				.then(res => res.json())
+				.then(json => {
+					this.setState({ username: json.username });
+				});
+		}
+	}
 	//needs token to be passed as header for each request
-	handleSubmit = (event) => {
-		event.preventDefault();
-		const url = `https://suresell.herokuapp.com/api/token/`;
-		fetch(url, {
+	handleLogin = (e, data) => {
+		e.preventDefault();
+		fetch('https://suresell.herokuapp.com/api/token/', {
 			method: 'POST',
 			headers: {
-				'Content-Type': 'application/json',
+				'Content-Type': 'application/json'
 			},
-			body: JSON.stringify({
-				username: this.state.username,
-				password: this.state.password,
-			}),
+			body: JSON.stringify(data)
 		})
-			.then((res) => {
-				return res.json();
-			})
-			.then((res) => {
+			.then(res => res.json())
+			.then(json => {
+				localStorage.setItem('token', json.token);
 				this.setState({
-					token: this.state.token,
-					email: this.state.email,
-					username: this.state.username,
-					password: this.state.password,
 					login: true,
+					displayed_form: '',
+					username: json.user
+					
 				});
-				console.log(res);
-				localStorage.setItem('token', res.access);
 			});
 	};
+
+	handleSignup = (e, data) => {
+		e.preventDefault();
+		fetch('https://suresell.herokuapp.com/users/register', {
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/json'
+			},
+			body: JSON.stringify(data)
+		})
+			.then(res => res.json())
+			.then(json => {
+				localStorage.setItem('token', json.token);
+				this.setState({
+					login: true,
+					displayed_form: '',
+					username: json.username
+				});
+			});
+	};
+	display_form = form => {
+		this.setState({
+			displayed_form: form
+		});
+	};
+
 	handleLogout = () => {
 		localStorage.removeItem('token');
-		this.setState({ token: '',
-		email: 'test',
-		username: 'atp429',
-		password: 'Adb042415!',
-		login: false
-	})
+		this.setState({ login: false, username: '' });
 	};
-	handleChangeEmail = (event) =>
-		this.setState({
-			email: event.target.value,
-		});
-	handleChangeUsername = (event) =>
-		this.setState({
-			username: event.target.value,
-		});
-	handleChangePassword = (event) =>
-		this.setState({
-			password: event.target.value,
-		});
 
 	render() {
+		let form;
+		switch (this.state.displayed_form) {
+			case 'login':
+				form = <Login handleLogin={this.handleLogin} />;
+				break;
+			case 'signup':
+				form = <SignUp handleSignup={this.handleSignup} />;
+				break;
+			default:
+				form = null;
+		}
 		return (
-			<div className='App'>
-				<Route
+			<div className="App">
+				<Nav
+					login={this.state.login}
+					display_form={this.display_form}
+					handleLogout={this.handleLogout}
+				/>
+				{form}
+				
+					<h3>
+						{this.state.login
+							? `Hello, ${this.state.username}`
+							: 'Please Log In'}
+					</h3>
+			
+
+
+				{/* <Route
 					path='/'
 					exact
 					render={() => {
 						return (
 							<Login
 								handleLogout={this.handleLogout}
-								handleSubmit={this.handleSubmit}
+								handleLogin={this.handleLogin}
 								handleChangeEmail={this.handleChangeEmail}
 								handleChangePassword={this.handleChangePassword}
 								handleChangeUsername={this.handleChangeUsername}
 							/>
 						);
 					}}
-				/>
+				/> */}
 				<Route path='/about' component={About} />
 				<Route path='/viewall' component={ViewAll} />
 				<Route path='/add' component={Add} />
