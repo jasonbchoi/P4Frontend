@@ -175,6 +175,7 @@ class Add extends Component {
           variant="primary"
           size="lg"
           block
+          href='/viewall'
         >
           Make Card
         </Button>

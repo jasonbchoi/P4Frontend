@@ -6,6 +6,7 @@ import About from './components/About';
 import Add from './components/Add';
 import Search from './components/Search';
 import ViewAll from './components/ViewAll';
+import Edit from './components/Edit'
 
 class App extends Component {
 	constructor(props) {
@@ -100,6 +101,10 @@ class App extends Component {
 		return (
 			<div className='App'>
 				{this.renderRedirect()}
+				<Route
+				path='/edit/:id'
+				component={Edit}/>
+				{/* <Edit/> */}
 				<Route
 					path='/'
 					exact

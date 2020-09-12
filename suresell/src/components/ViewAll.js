@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import HeadNav from './HeadNav';
 import BaseNav from './BaseNav';
 import { render } from 'react-dom';
+import {Link} from 'react-router-dom'
 // import SwipeToDelete from 'react-swipe-to-delete-component';
 
 import { Form, Button, Col } from 'react-bootstrap';
@@ -15,6 +16,7 @@ class ViewAll extends Component {
 			car: null,
 			allCars: null,
 			token: localStorage.getItem('token') ? true : false,
+			
 		};
 	}
 
@@ -40,6 +42,7 @@ class ViewAll extends Component {
 				this.setState({ features: newArr });
 			});
 	};
+
 	componentDidMount() {
 		let url = `https://suresell.herokuapp.com/cars/`;
 		if (this.state.token) {
@@ -56,25 +59,53 @@ class ViewAll extends Component {
 		}
 	}
 
-	// handleDelete = (event) => {
-	// 	event.preventDefault()
-	// 	let url = `https://suresell.herokuapp.com/cars/`;
-	// 	console.log(this.props.car)
-	// 	fetch(`${url}/${this.props.match.params.id}`, {
-	// 		method: 'DELETE',
-	// 		headers: {
-	// 			'Content-Type': 'application/json',
-	// 		},
-	// 	}).then(() => {
-	// 		fetch(url)
-	// 		.then((res) => res.json())
-	// 		.then((res) => {
-	// 			this.setState({ features: [...res] });
-	// 		})
-	// 	})
-		
+	handleDelete = (event, id) => {
+		event.preventDefault()
+		let url = `https://suresell.herokuapp.com/cars/`;
+		console.log(this)
+		fetch(`${url}${id}`, {
+			method: 'DELETE',
+			headers: {
+				'Content-Type': 'application/json',
+				Authorization: 'Bearer ' + localStorage.getItem('token')
+			},
+		}).then(() => {
+			fetch(url)
+			.then((res) => res.json())
+			.then((res) => {
+				this.setState({ features: [...res] });
+			})
+		})
+	};
 
-	// };
+	handleEdit = (event) => {
+		// event.preventDefault();
+		console.log(event.target);
+		const data = {
+			method: "PUT",
+			headers: {
+				'Content-Type': 'application/json',
+				Authorization: 'Bearer ' + localStorage.getItem('token')
+			},
+			body: JSON.stringify({
+				year: this.state.year,
+				make: this.state.make,
+				model: this.state.year,
+				trim: this.state.trim,
+				// features: this.state.features,
+			})
+		};
+		fetch(
+			"https://suresell.herokuapp.com/cars/", data)
+			.then((res) => {
+				return res.json()
+			})
+			.then((res) => {
+				console.log(res);
+			}).catch(error => console.error(error))
+	}
+
+
 
 	// handleDelete = (event) => {
 	// 	fetch(`https://suresell.herokuapp.com/cars/${this.props.match.params.id}`, {
@@ -118,7 +149,7 @@ class ViewAll extends Component {
 		// if (this.handleDelete === undefined) {
 		// 	return null;
 		// }else{
-	
+	const handleDelete = this.handleDelete
 		
 		return (
 			<div className='ViewAll'>
@@ -147,10 +178,12 @@ class ViewAll extends Component {
 				</div>
 
 				<div className='cardContainer'>
+					{console.log(this)}
 					{this.state.features.map(function (car, index) {
 						return (
 							//
-							<div id='autoCard'>
+							<div id='autoCard' key={car.id}>
+								{console.log(this)}
 								{/* <SwipeToDelete key={car.id} car={car}> */}
 								<div className='headWrapper'>
 									<div className='number'>{car.year}</div>
@@ -177,13 +210,24 @@ class ViewAll extends Component {
 											<li>C</li>
 											<li>D</li>
 											<li>E</li>
-											<button className='editButton' onClick='handleEdit'>
-												Edit
-											</button>
+											<Link
+												to={{
+													pathname: "/edit/"+car.id,
+													data: car
+												}}
+											> Edit</Link>
+											{/* <button className='editButton'
+												name='handleEdit'
+												href={'edit/'+car.id}
+
+										
+												// onClick={(e) => { handleEdit(e, car.id) }}
+												>Edit
+											</button> */}
 											<button
 												name='handleDelete'
-												className='deleteButton'>
-												{/* onClick={this.handleDelete} */}
+												className='deleteButton'
+												onClick={(e)=> {handleDelete(e, car.id)}}>
 												Delete
 											</button>
 										</ul>
