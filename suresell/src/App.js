@@ -46,6 +46,7 @@ class App extends Component {
 					localStorage.setItem('token', res.access)
 				} else {
 					throw new Error('unsuccessful login')
+					
 				}
 			})
 			.then((res) => {
@@ -58,16 +59,12 @@ class App extends Component {
 				});
 				console.log(res);
 
-				// if (this.state.login) {
-
-				// 	return <ViewAll />
-
-				// } else {
-				// 	console.log('bye ')
-				// }
 			}).catch(err => {
 				this.setState({ error: true })
 				console.error(err)
+				if (this.state.error) { 
+					alert('Username and/or password is invalid') 
+				}
 			});
 
 	};
@@ -122,7 +119,7 @@ class App extends Component {
 				<Route path='/about' component={About} />
 				<Route path='/viewall' component={ViewAll} />
 				<Route path='/add' component={Add} />
-				<Route path='/search' component={Search} />
+				{/* <Route path='/search' component={Search} /> */}
 			</div>
 		);
 	}

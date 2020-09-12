@@ -1,6 +1,9 @@
 import React, { Component } from "react";
 import HeadNav from "./HeadNav";
 import BaseNav from "./BaseNav";
+import { render } from 'react-dom';
+import SwipeToDelete from 'react-swipe-to-delete-component';
+
 
 import { Form, Button, Col } from "react-bootstrap";
 
@@ -14,6 +17,24 @@ class ViewAll extends Component {
 			allCars: null,
 			token: localStorage.getItem('token') ? true : false,
 		};
+	}
+
+	componentDidMount() {
+		let url = `https://suresell.herokuapp.com/cars/`;
+		if (this.state.token) {
+			fetch(url, {
+				method: 'GET',
+				headers: {
+					'Content-Type': 'application/json',
+				},
+
+			})
+				.then((res) => res.json())
+				.then((res) => {
+					this.setState({ features: [...res] });
+				});
+
+		}
 	}
 
 	handleChange = (event) => {
@@ -40,23 +61,20 @@ class ViewAll extends Component {
 				this.setState({ features: newArr });
 			});
 	};
-	componentDidMount() {
-		let url = `https://suresell.herokuapp.com/cars/`;
-		if (this.state.token) {
-			fetch(url, {
-				method: 'GET',
-				headers: {
-					'Content-Type': 'application/json',
-				},
 
-			})
-				.then((res) => res.json())
-				.then((res) => {
-					this.setState({ features: [...res] });
-				});
+	// handleDelete = (event) => {
+	// 	event.preventDefault();
+	// 	let url = `https://suresell.herokuapp.com/cars/`;
+	// 	if (this.state.token) {
+	// 		fetch(url, {
+	// 			method: 'DELETE',
+	// 			headers: {
+	// 				'Content-Type': 'application/json',
+	// 			},
+	// 		})
+	// 	}
+	// }
 
-		}
-	}
 
 	render() {
 		return (
@@ -79,7 +97,7 @@ class ViewAll extends Component {
 							<Col xs="auto" className="my-1">
 								<Button type="submit" className="mb-2" id="Button">
 									Find
-                </Button>
+                				</Button>
 							</Col>
 						</Form.Row>
 					</Form>
@@ -88,7 +106,9 @@ class ViewAll extends Component {
 				<div className='cardContainer'>
 					{this.state.features.map(function (car, index) {
 						return (
+							//
 							<div id="autoCard">
+								{/* <SwipeToDelete key={car.id} car={car}> */}
 								<div className="headWrapper">
 									<div className="number">{car.year}</div>
 									<div className="makeModel">
@@ -115,9 +135,20 @@ class ViewAll extends Component {
 											<li>D</li>
 											<li>E</li>
 										</ul>
+										<button
+											className='editButton' onClick='editCard'>
+											Edit
+										</button>
+										<button
+											className='deleteButton' onClick='deleteCard'>
+											Delete
+										</button>
 									</div>
+
 								</div>
+								{/* </SwipeToDelete> */}
 							</div>
+
 						);
 					})}
 				</div>
