@@ -15,15 +15,15 @@ class App extends Component {
 			username: '',
 			password: '',
 			login: false,
-			error: false
+			error: false,
 		};
 	}
 
 	renderRedirect = () => {
 		if (this.state.login && !this.state.error) {
-			return <Redirect to='/viewall' />
+			return <Redirect to='/viewall' />;
 		}
-	}
+	};
 	//needs token to be passed as header for each request
 	handleLogin = (event) => {
 		event.preventDefault();
@@ -43,10 +43,9 @@ class App extends Component {
 			})
 			.then((res) => {
 				if (res.access) {
-					localStorage.setItem('token', res.access)
+					localStorage.setItem('token', res.access);
 				} else {
-					throw new Error('unsuccessful login')
-					
+					throw new Error('unsuccessful login');
 				}
 			})
 			.then((res) => {
@@ -58,16 +57,17 @@ class App extends Component {
 					login: localStorage.getItem('token') ? true : false,
 				});
 				console.log(res);
-
-			}).catch(err => {
-				this.setState({ error: true })
-				console.error(err)
-				if (this.state.error) { 
-					alert('Username and/or password is invalid') 
+			})
+			.catch((err) => {
+				this.setState({ error: true });
+				console.error(err);
+				if (this.state.error) {
+					alert('Username and/or password is invalid');
 				}
 			});
-
 	};
+	
+
 	handleLogout = () => {
 		localStorage.removeItem('token');
 		this.setState({
@@ -78,7 +78,6 @@ class App extends Component {
 			login: false,
 		});
 	};
-
 
 	handleChangeEmail = (event) =>
 		this.setState({

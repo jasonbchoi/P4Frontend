@@ -1,11 +1,10 @@
-import React, { Component } from "react";
-import HeadNav from "./HeadNav";
-import BaseNav from "./BaseNav";
+import React, { Component } from 'react';
+import HeadNav from './HeadNav';
+import BaseNav from './BaseNav';
 import { render } from 'react-dom';
-import SwipeToDelete from 'react-swipe-to-delete-component';
+// import SwipeToDelete from 'react-swipe-to-delete-component';
 
-
-import { Form, Button, Col } from "react-bootstrap";
+import { Form, Button, Col } from 'react-bootstrap';
 
 class ViewAll extends Component {
 	constructor(props) {
@@ -33,9 +32,7 @@ class ViewAll extends Component {
 				this.setState({ features: [...res] });
 				for (let i = 0; i < this.state.features.length; i++) {
 					if (
-						Object.values(this.state.features[i]).includes(
-							this.state.newSearch
-						)
+						Object.values(this.state.features[i]).includes(this.state.newSearch)
 					) {
 						newArr.push(this.state.features[i]);
 					}
@@ -51,41 +48,45 @@ class ViewAll extends Component {
 				headers: {
 					'Content-Type': 'application/json',
 				},
-
 			})
 				.then((res) => res.json())
 				.then((res) => {
 					this.setState({ features: [...res] });
 				});
-
 		}
 	}
 
-	handleDelete = () => {
-		let url = `https://suresell.herokuapp.com/cars/`;
-		let newCar = this.props.car;
-		const index = newCar.features.indexOf(this.props.id)
-		if (index > -1) {
-			newCar.features.splice(index, 1);
-		}
-		const data = {
-			method: "DELETE",
-			headers: {
-				'Content-Type': 'application/json',
-				Authorization: 'Bearer ' + localStorage.getItem('token')
-			},
-		}
-		fetch(
-			"https://suresell.herokuapp.com/cars/", data)
-			.then((res) => {
-				return res.json()
-			})
-			.then((res) => {
-				console.log(res);
-			}).catch(error => console.error(error))
+	// handleDelete = (event) => {
+	// 	event.preventDefault()
+	// 	let url = `https://suresell.herokuapp.com/cars/`;
+	// 	console.log(this.props.car)
+	// 	fetch(`${url}/${this.props.match.params.id}`, {
+	// 		method: 'DELETE',
+	// 		headers: {
+	// 			'Content-Type': 'application/json',
+	// 		},
+	// 	}).then(() => {
+	// 		fetch(url)
+	// 		.then((res) => res.json())
+	// 		.then((res) => {
+	// 			this.setState({ features: [...res] });
+	// 		})
+	// 	})
+		
 
-	}
+	// };
 
+	// handleDelete = (event) => {
+	// 	fetch(`https://suresell.herokuapp.com/cars/${this.props.match.params.id}`, {
+	// 		method: 'DELETE',
+	// 	}).then(() => {
+	// 		fetch(`https://suresell.herokuapp.com/cars`)
+	// 			.then((res) => res.json())
+	// 			.then((res) => {
+	// 				this.setState({ allCars: res, redirect: true });
+	// 			});
+	// 	});
+	// };
 	// handleEdit = (event) => {
 	// 	// event.preventDefault();
 	// 	console.log(event.target);
@@ -114,27 +115,32 @@ class ViewAll extends Component {
 	// }
 
 	render() {
+		// if (this.handleDelete === undefined) {
+		// 	return null;
+		// }else{
+	
+		
 		return (
-			<div className="ViewAll">
+			<div className='ViewAll'>
 				<HeadNav />
-				<div className="searchWrapper">
-					<Form className="ViewAllSearch" onSubmit={this.handleSubmit}>
-						<Form.Row className="align-items-center">
-							<Col sm={9.5} className="my-1">
+				<div className='searchWrapper'>
+					<Form className='ViewAllSearch' onSubmit={this.handleSubmit}>
+						<Form.Row className='align-items-center'>
+							<Col sm={9.5} className='my-1'>
 								<Form.Control
-									id="inlineFormInputName"
-									placeholder="year, make, model, or trim"
-									type="text"
-									name="searchString"
+									id='inlineFormInputName'
+									placeholder='year, make, model, or trim'
+									type='text'
+									name='searchString'
 									required
 									onChange={this.handleChange}
 								/>
 							</Col>
 
-							<Col xs="auto" className="my-1">
-								<Button type="submit" className="mb-2" id="Button">
+							<Col xs='auto' className='my-1'>
+								<Button type='submit' className='mb-2' id='Button'>
 									Find
-                				</Button>
+								</Button>
 							</Col>
 						</Form.Row>
 					</Form>
@@ -144,18 +150,18 @@ class ViewAll extends Component {
 					{this.state.features.map(function (car, index) {
 						return (
 							//
-							<div id="autoCard">
+							<div id='autoCard'>
 								{/* <SwipeToDelete key={car.id} car={car}> */}
-								<div className="headWrapper">
-									<div className="number">{car.year}</div>
-									<div className="makeModel">
+								<div className='headWrapper'>
+									<div className='number'>{car.year}</div>
+									<div className='makeModel'>
 										{car.make} {car.model}
 										<br />
 										{car.trim}
 									</div>
 								</div>
-								<div className="bodyWrapper">
-									<div className="left">
+								<div className='bodyWrapper'>
+									<div className='left'>
 										<ul>
 											<li>A</li>
 											<li>B</li>
@@ -164,7 +170,7 @@ class ViewAll extends Component {
 											<li>E</li>
 										</ul>
 									</div>
-									<div className="right">
+									<div className='right'>
 										<ul>
 											<li>A</li>
 											<li>B</li>
@@ -174,24 +180,25 @@ class ViewAll extends Component {
 											<button className='editButton' onClick='handleEdit'>
 												Edit
 											</button>
-											<button className='deleteButton' onClick='handleDelete'>
+											<button
+												name='handleDelete'
+												className='deleteButton'>
+												{/* onClick={this.handleDelete} */}
 												Delete
 											</button>
 										</ul>
-
 									</div>
-
 								</div>
 								{/* </SwipeToDelete> */}
 							</div>
-
 						);
 					})}
 				</div>
 				<BaseNav />
 			</div>
 		);
+		}
 	}
-}
+// }
 
 export default ViewAll;
