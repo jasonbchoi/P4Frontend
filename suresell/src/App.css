@@ -197,6 +197,9 @@
 	.bodyWrapper ul {
 		list-style: square;
 	}
+	.editButton, .deleteButton{
+		font-size: 12px;
+	}
 	
 	
 /******************  Login.js  ******************/

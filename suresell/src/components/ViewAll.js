@@ -19,24 +19,6 @@ class ViewAll extends Component {
 		};
 	}
 
-	componentDidMount() {
-		let url = `https://suresell.herokuapp.com/cars/`;
-		if (this.state.token) {
-			fetch(url, {
-				method: 'GET',
-				headers: {
-					'Content-Type': 'application/json',
-				},
-
-			})
-				.then((res) => res.json())
-				.then((res) => {
-					this.setState({ features: [...res] });
-				});
-
-		}
-	}
-
 	handleChange = (event) => {
 		this.setState({ newSearch: event.target.value });
 	};
@@ -61,20 +43,55 @@ class ViewAll extends Component {
 				this.setState({ features: newArr });
 			});
 	};
+	componentDidMount() {
+		let url = `https://suresell.herokuapp.com/cars/`;
+		if (this.state.token) {
+			fetch(url, {
+				method: 'GET',
+				headers: {
+					'Content-Type': 'application/json',
+				},
 
-	// handleDelete = (event) => {
-	// 	event.preventDefault();
-	// 	let url = `https://suresell.herokuapp.com/cars/`;
-	// 	if (this.state.token) {
-	// 		fetch(url, {
-	// 			method: 'DELETE',
-	// 			headers: {
-	// 				'Content-Type': 'application/json',
-	// 			},
+			})
+				.then((res) => res.json())
+				.then((res) => {
+					this.setState({ features: [...res] });
+				});
+
+		}
+	}
+
+	handleDelete=()=>{
+		let url = `https://suresell.herokuapp.com/cars/`;
+
+	}
+
+	// handleEdit = (event) => {
+	// 	// event.preventDefault();
+	// 	console.log(event.target);
+	// 	const data = {
+	// 		method: "PUT",
+	// 		headers: {
+	// 			'Content-Type': 'application/json',
+	// 			Authorization: 'Bearer ' + localStorage.getItem('token')
+	// 		},
+	// 		body: JSON.stringify({
+	// 			year: this.state.year,
+	// 			make: this.state.make,
+	// 			model: this.state.year,
+	// 			trim: this.state.trim,
+	// 			// features: this.state.features,
 	// 		})
-	// 	}
+	// 	};
+	// 	fetch(
+	// 		"https://suresell.herokuapp.com/cars/", data)
+	// 		.then((res) => {
+	// 			return res.json()
+	// 		})
+	// 		.then((res) => {
+	// 			console.log(res);
+	// 		}).catch(error => console.error(error))
 	// }
-
 
 	render() {
 		return (
@@ -107,7 +124,7 @@ class ViewAll extends Component {
 					{this.state.features.map(function (car, index) {
 						return (
 							//
-							<div id={car} key={index}>
+							<div id="autoCard">
 								{/* <SwipeToDelete key={car.id} car={car}> */}
 								<div className="headWrapper">
 									<div className="number">{car.year}</div>
@@ -134,15 +151,14 @@ class ViewAll extends Component {
 											<li>C</li>
 											<li>D</li>
 											<li>E</li>
+											<button className='editButton' onClick='handleEdit'>
+												Edit
+											</button>
+											<button className='deleteButton' onClick='handleDelete'>
+												Delete
+											</button>
 										</ul>
-										<button
-											className='editButton' onClick='editCard'>
-											Edit
-										</button>
-										<button
-											className='deleteButton' onClick='deleteCard'>
-											Delete
-										</button>
+
 									</div>
 
 								</div>
