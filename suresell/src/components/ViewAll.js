@@ -61,8 +61,28 @@ class ViewAll extends Component {
 		}
 	}
 
-	handleDelete=()=>{
+	handleDelete = () => {
 		let url = `https://suresell.herokuapp.com/cars/`;
+		let newCar = this.props.car;
+		const index = newCar.features.indexOf(this.props.id)
+		if (index > -1) {
+			newCar.features.splice(index, 1);
+		}
+		const data = {
+			method: "DELETE",
+			headers: {
+				'Content-Type': 'application/json',
+				Authorization: 'Bearer ' + localStorage.getItem('token')
+			},
+		}
+		fetch(
+			"https://suresell.herokuapp.com/cars/", data)
+			.then((res) => {
+				return res.json()
+			})
+			.then((res) => {
+				console.log(res);
+			}).catch(error => console.error(error))
 
 	}
 
