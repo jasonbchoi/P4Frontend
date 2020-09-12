@@ -107,7 +107,7 @@ class ViewAll extends Component {
 					{this.state.features.map(function (car, index) {
 						return (
 							//
-							<div id="autoCard">
+							<div id={car} key={index}>
 								{/* <SwipeToDelete key={car.id} car={car}> */}
 								<div className="headWrapper">
 									<div className="number">{car.year}</div>
